@@ -2280,8 +2280,8 @@ function getseries(){
             success: function(data){
                 console.log(data);
                 var json = eval(data);
-                alert(JSON.stringify(json));
-                if( json.length>0 ){                    
+                if( json.length>0 ){    
+                    alert(JSON.stringify(json));            
                     ejecutaSQL('delete from tbl_series_tangibles', 0);                    
                     for(var i=0; i<json.length; i++){                        
                         ejecutaSQL('insert into tbl_series_tangibles (serie, usuario, modelo, descripcion, fecha_descarga, precio, tipo) values("'+json[i].serie+'","'+json[i].usuario+'","'+json[i].modelo+'","'+json[i].descripcion_modelo+'","'+fech+'",'+json[i].precio+',"'+json[i].tipo+'")',0);                                                         
@@ -3849,10 +3849,11 @@ function  scaner_list(vFlag){
         { 
             //alert(result.text);                   
             vSerie.push(result.text);
-            console.log(vSerie);
+            alert(vSerie);
             for(let x of vSerie){
+                // serie = ? and usuario=?
                 db.transaction(function(cmd){   
-                cmd.executeSql("SELECT * FROM tbl_series_tangibles where serie = ? and usuario=?", [x.toString(),vUsr], function (cmd, results) {
+                cmd.executeSql("SELECT * FROM tbl_series_tangibles", [], function (cmd, results) {
                         var len = results.rows.length, i;                    
                         i = 0;        
                         //console.log(vSerie + '/' + len);        
