@@ -2280,7 +2280,7 @@ function getseries(){
             success: function(data){
                 console.log(data);
                 var json = eval(data);
-                alert(json);
+                alert(JSON.stringify(json));
                 if( json.length>0 ){                    
                     ejecutaSQL('delete from tbl_series_tangibles', 0);                    
                     for(var i=0; i<json.length; i++){                        
