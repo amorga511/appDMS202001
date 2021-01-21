@@ -3845,7 +3845,8 @@ function  scaner_list(vFlag){
                 "Cancelled: " + result.cancelled);*/
 
 
-        if(result.cancelled == false)                     {
+        if(result.cancelled == false)  
+            alert(result.text);                   {
             vSerie.push(result.text);
             for(let x of vSerie){
                 console.log(x);
