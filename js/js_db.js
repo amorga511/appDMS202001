@@ -46,7 +46,7 @@ function ejecutaSQL(vQuery, vFlag){
             cmd.executeSql(vQuery, [], function(){ 
                 console.log('success');
             },function(e){
-                //alert('e');
+                alert('e');
                 console.log('Error' + e.error);
                 //console.log(e);
                 //window.plugins.toast.show('Error..', 1000, 'bottom');
