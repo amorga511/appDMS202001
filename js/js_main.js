@@ -3850,11 +3850,9 @@ function  scaner_list(vFlag){
         { 
             //alert(result.text);                   
             vSerie.push(result.text);
-            alert(vSerie);
             for(let x of vSerie){
-                // serie = ? and usuario=?
                 db.transaction(function(cmd){   
-                cmd.executeSql("SELECT * FROM tbl_series_tangibles", [], function (cmd, results) {
+                cmd.executeSql("SELECT * FROM tbl_series_tangibles where serie = ?", [x], function (cmd, results) {
                         var len = results.rows.length, i;                    
                         i = 0;        
                         //console.log(vSerie + '/' + len);        
