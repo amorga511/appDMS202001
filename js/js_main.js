@@ -3847,6 +3847,29 @@ function  scaner_list(vFlag){
 
         if(result.cancelled == false)                     {
             vSerie.push(result.text);
+            for(let x of vSerie){
+                console.log(x);
+                db.transaction(function(cmd){   
+                cmd.executeSql("SELECT * FROM tbl_series_tangibles where serie = ? and usuario=?", [x,vUsr], function (cmd, results) {
+                        var len = results.rows.length, i;                    
+                        i = 0;
+        
+                        console.log(vSerie + '/' + len);
+        
+                        if(len > 0 && vDateLicense){
+                            for(i=0;i<len;i++){
+                                objSerie = {"serie":results.rows.item(i).serie, "precio":results.rows.item(i).precio, "modelo":results.rows.item(i).modelo, "desc":results.rows.item(i).descripcion, "tipo":results.rows.item(i).tipo};
+                                break;
+                            }
+                            listSeries.push(objSerie);                    
+                        }else{
+                            alert('Serie no encontrada');
+                        }
+                        showlistSeries(0);
+                    });
+                });
+        
+            }
         }else{
             console.log('Scan Done');
         }
@@ -3855,29 +3878,7 @@ function  scaner_list(vFlag){
         alert("Scanning failed: " + error);
     }); 
 
-    for(let x of vSerie){
-        console.log(x);
-        db.transaction(function(cmd){   
-        cmd.executeSql("SELECT * FROM tbl_series_tangibles where serie = ? and usuario=?", [x,vUsr], function (cmd, results) {
-                var len = results.rows.length, i;                    
-                i = 0;
 
-                console.log(vSerie + '/' + len);
-
-                if(len > 0 && vDateLicense){
-                    for(i=0;i<len;i++){
-                        objSerie = {"serie":results.rows.item(i).serie, "precio":results.rows.item(i).precio, "modelo":results.rows.item(i).modelo, "desc":results.rows.item(i).descripcion, "tipo":results.rows.item(i).tipo};
-                        break;
-                    }
-                    listSeries.push(objSerie);                    
-                }else{
-                    alert('Serie no encontrada');
-                }
-                showlistSeries(0);
-            });
-        });
-
-    }
     
 
 
