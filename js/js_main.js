@@ -2286,7 +2286,7 @@ function getseries(){
                     for(var i=0; i<json.length; i++){                        
                         ejecutaSQL('insert into tbl_series_tangibles (serie, usuario, modelo, descripcion, fecha_descarga, precio, tipo) values("'+json[i].serie+'","'+json[i].usuario+'","'+json[i].modelo+'","'+json[i].descripcion_modelo+'","'+fech+'",'+json[i].precio+',"'+json[i].tipo+'")',0);                                                         
                     }                       
-                    setTimeout(function(){$.mobile.loading('hide')},3000);                       
+                    setTimeout(function(){$.mobile.loading('hide'), alert('Series Actualizadas Correctament'); },3000);                       
                 }               
             },error: function(error){
                 console.log(error);
