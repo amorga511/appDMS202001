@@ -3849,15 +3849,10 @@ function  scaner_list(vFlag){
         { 
             //alert(result.text);                   
             vSerie.push(result.text);
+            console.log(vSerie);
             for(let x of vSerie){
-                alert(x);
-                alert(vUsr);
-                if(x=='8950402316517297588'){
-                    alert('Serie varchar');
-                }
-                alert(x.toString());
                 db.transaction(function(cmd){   
-                cmd.executeSql("SELECT * FROM tbl_series_tangibles where serie = ? and usuario=?", [x,vUsr], function (cmd, results) {
+                cmd.executeSql("SELECT * FROM tbl_series_tangibles where serie = ? and usuario=?", [x.toString(),vUsr], function (cmd, results) {
                         var len = results.rows.length, i;                    
                         i = 0;        
                         //console.log(vSerie + '/' + len);        
