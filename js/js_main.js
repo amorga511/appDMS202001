@@ -2280,7 +2280,7 @@ function getseries(){
             success: function(data){
                 console.log(data);
                 var json = eval(data);
-                
+                alert(json);
                 if( json.length>0 ){                    
                     ejecutaSQL('delete from tbl_series_tangibles', 0);                    
                     for(var i=0; i<json.length; i++){                        
@@ -3851,6 +3851,7 @@ function  scaner_list(vFlag){
             vSerie.push(result.text);
             for(let x of vSerie){
                 console.log(x);
+                
                 db.transaction(function(cmd){   
                 cmd.executeSql("SELECT * FROM tbl_series_tangibles where serie = ? and usuario=?", [x,vUsr], function (cmd, results) {
                         var len = results.rows.length, i;                    
