@@ -3827,6 +3827,7 @@ function  scaner_list(vFlag){
     var vUsr = vDatosUsuario.user;
     var objSerie;
     var vSerie = [];
+    var vFSerie=0;
 
     if(vFlag==0){
         listSeries=[];
@@ -3848,28 +3849,38 @@ function  scaner_list(vFlag){
 
         if(result.cancelled == false) 
         { 
-            //alert(result.text);                   
-            vSerie.push(result.text);
-            for(let x of vSerie){
-                db.transaction(function(cmd){   
-                cmd.executeSql("SELECT * FROM tbl_series_tangibles where serie = ?", [x], function (cmd, results) {
-                        var len = results.rows.length, i;                    
-                        i = 0;        
-                        //console.log(vSerie + '/' + len);        
-                        if(len > 0){
-                            for(i=0;i<len;i++){
-                                objSerie = {"serie":results.rows.item(i).serie, "precio":results.rows.item(i).precio, "modelo":results.rows.item(i).modelo, "desc":results.rows.item(i).descripcion, "tipo":results.rows.item(i).tipo};
-                                break;
-                            }
-                            listSeries.push(objSerie);                    
-                        }else{
-                            alert('Serie no encontrada');
-                        }
-                        showlistSeries(0);
-                    });
-                });
-        
+            //alert(result.text);    
+            for(let vX of vSerie){
+                if(vX==result.text){
+                    vFSerie = 1;
+                }
             }
+            if(vFSerie==0){
+                vSerie.push(result.text);
+                for(let x of vSerie){
+                    db.transaction(function(cmd){   
+                    cmd.executeSql("SELECT * FROM tbl_series_tangibles where serie = ?", [x], function (cmd, results) {
+                            var len = results.rows.length, i;                    
+                            i = 0;        
+                            //console.log(vSerie + '/' + len);        
+                            if(len > 0){
+                                for(i=0;i<len;i++){
+                                    objSerie = {"serie":results.rows.item(i).serie, "precio":results.rows.item(i).precio, "modelo":results.rows.item(i).modelo, "desc":results.rows.item(i).descripcion, "tipo":results.rows.item(i).tipo};
+                                    break;
+                                }
+                                listSeries.push(objSerie);                    
+                            }else{
+                                alert('Serie no encontrada');
+                            }
+                            showlistSeries(0);
+                        });
+                    });            
+                }                
+            }else{
+                alert('Serie Duplicada');
+            }
+                           
+            
         }else{
             console.log('Scan Done');
         }
