@@ -3850,8 +3850,8 @@ function  scaner_list(vFlag){
         if(result.cancelled == false) 
         { 
             //alert(result.text);    
-            for(let vX of vSerie){
-                if(vX==result.text){
+            for(let vX of listSeries){
+                if(vX.serie==result.text){
                     vFSerie = 1;
                 }
             }
