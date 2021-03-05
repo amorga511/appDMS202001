@@ -25,7 +25,7 @@
   <plugin name="https://github.com/katzer/cordova-plugin-local-notifications#caff55e" />
   <plugin name="phonegap-plugin-barcodescanner" />
 
-  <icon src="img/appicon.png"/>
+  <icon src="appicon.png"/>
   <platform name="android">
     <!--<icon src="img/appicon.png" density="ldpi"/>
     <icon src="img/appicon.png" density="mdpi"/>
