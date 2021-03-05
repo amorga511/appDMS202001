@@ -34,7 +34,8 @@
     <icon src="img/appicon.png"  density="xhdpi"/>
     <icon src="img/appicon.png"  density="xxhdpi"/>
     <icon src="img/appicon.png"  density="xxxhdpi"/>-->
-    <!--<splash src="www/res/screen/android/drawable-land-ldpi-screen.png" density="land-ldpi"/>
+    <splash src="appicon.png" density="land-ldpi"/>
+    <!--
     <splash src="www/res/screen/android/drawable-land-mdpi-screen.png" density="land-mdpi"/>
     <splash src="www/res/screen/android/drawable-land-hdpi-screen.png" density="land-hdpi"/>
     <splash src="www/res/screen/android/drawable-land-xhdpi-screen.png" density="land-xhdpi"/>
