@@ -6,6 +6,7 @@
   <preference name="phonegap-version" value="cli-8.0.0" />
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="StatusBarBackgroundColor" value="#000000" />
+  <preference name="SplashScreen" value="false" />
   
   <preference name="AndroidPersistentFileLocation" value="Internal" />
   <preference name="AndroidPersistentFileLocation" value="Compatibility" />
