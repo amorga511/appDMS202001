@@ -28,8 +28,8 @@
 
   <icon src="appicon.png"/>
   <platform name="android">
-    <!--<icon src="img/appicon.png" density="ldpi"/>
-    <icon src="img/appicon.png" density="mdpi"/>
+    <icon src="appicon.png" density="ldpi"/>
+    <!--<icon src="img/appicon.png" density="mdpi"/>
     <icon src="img/appicon.png"  density="hdpi"/>
     <icon src="img/appicon.png"  density="xhdpi"/>
     <icon src="img/appicon.png"  density="xxhdpi"/>
